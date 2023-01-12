@@ -15,7 +15,7 @@ class Movies extends Component {
         pageSize : 5,
         currentPage : 1,
         sortColumn: {
-            path: 'title',
+            path: '',
             order: 'asc'
         }
     };
@@ -71,33 +71,31 @@ class Movies extends Component {
         const { filtredMovies, movies } = this.getPageData();
 
         return (
-            <div className="container mt-4">
-                <div className="row justify-content-around">
-                    <div className="col-2">
-                        <Genres 
-                            genres = {allGenres}
-                            selectedGenre = {selectedGenre}
-                            onGenreSelect = {this.handleGenreSelect}
-                        />
-                    </div>
-                    <div className="col">
-                        <h4 className='m-2'>
-                            { (filtredMovies.length === 0)? "There are no movies in the database.":"Showing "+filtredMovies.length+" movies in the database."}
-                        </h4>
-                        <MoviesTable 
-                            movies = {movies}
-                            sortColumn = {sortColumn}
-                            onLike = {this.handleLike}
-                            onDelete = {this.handleDelete}
-                            onSort = {this.handleSort}
-                        />
-                        <Pagination 
-                            itemsCount = {filtredMovies.length} 
-                            pageSize = {pageSize} 
-                            currentPage = {currentPage} 
-                            onPageChange = {this.handlePageChange} 
-                        />
-                    </div>
+            <div className="row justify-content-around">
+                <div className="col-2">
+                    <Genres 
+                        genres = {allGenres}
+                        selectedGenre = {selectedGenre}
+                        onGenreSelect = {this.handleGenreSelect}
+                    />
+                </div>
+                <div className="col">
+                    <h4 className='m-2'>
+                        { (filtredMovies.length === 0)? "There are no movies in the database.":"Showing "+filtredMovies.length+" movies in the database."}
+                    </h4>
+                    <MoviesTable 
+                        movies = {movies}
+                        sortColumn = {sortColumn}
+                        onLike = {this.handleLike}
+                        onDelete = {this.handleDelete}
+                        onSort = {this.handleSort}
+                    />
+                    <Pagination 
+                        itemsCount = {filtredMovies.length} 
+                        pageSize = {pageSize} 
+                        currentPage = {currentPage} 
+                        onPageChange = {this.handlePageChange} 
+                    />
                 </div>
             </div>
         );
