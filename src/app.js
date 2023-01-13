@@ -6,6 +6,8 @@ import Customers from './components/customers';
 import NotFound from './components/notFound';
 import Rentals from './components/rentals';
 import NavBar from './components/navBar';
+import LoginForm from './components/loginForm';
+import RegisterForm from './components/registerForm';
 
 class App extends Component {
     render() { 
@@ -14,6 +16,8 @@ class App extends Component {
                 <NavBar />
                 <div className="container mt-4">
                     <Switch>
+                        <Route path="/register" component={RegisterForm} />
+                        <Route path="/login" component={LoginForm} />
                         <Route path="/rentals" component={Rentals} />
                         <Route path="/customers" component={Customers} />
                         <Route path="/notFound" component={NotFound} />
