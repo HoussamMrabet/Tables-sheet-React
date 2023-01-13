@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { getMovies } from "../services/fakeMovieService";
 import { getGenres } from "../services/fakeGenreService";
 import MoviesTable from './moviesTable';
-import Pagination from './common/pagination';
+import Pagination from './common/tables/pagination';
 import Genres from './common/genres';
 import SearchBox from './common/searchBox';
 import { paginate } from '../utils/paginate';
