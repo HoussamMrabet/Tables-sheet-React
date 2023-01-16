@@ -18,7 +18,7 @@ class MovieDetails extends Form {
 
     schema = {
         _id: Joi.string(),
-        title: Joi.string().required().label("Title"),
+        title: Joi.string().required().min(5).max(50).label("Title"),
         genreId: Joi.string().required().label("Genre"),
         numberInStock: Joi.number().required().integer().min(0).max(100).label("Number in Stock"),
         dailyRentalRate: Joi.number().required().min(0).max(10).label("Daily Rental Rate"),
@@ -64,7 +64,7 @@ class MovieDetails extends Form {
         return (
             <div className="col-6 mt-2">
                 <h1>Movie Form</h1>
-                <form onSubmit={this.doSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     {this.renderInput("title", "Title")}
                     {this.renderSelect("genreId", "Genre", this.state.genres)}
                     {this.renderInput("numberInStock", "Number in Stock")}

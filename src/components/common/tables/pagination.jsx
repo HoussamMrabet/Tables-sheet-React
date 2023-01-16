@@ -15,7 +15,8 @@ const Pagination = (props) => {
             <ul className="pagination justify-content-center">
                 {pages.map(page => (
                     <li key={page} className={ page===currentPage? 'page-item active' : 'page-item' }>
-                        <a href="#0" className="page-link" onClick={() => onPageChange(page)}>{page}</a>
+                        {/* eslint-disable-next-line*/}
+                        <a className="page-link" onClick={() => onPageChange(page)}>{page}</a>
                     </li>
                 ))}
             </ul>
