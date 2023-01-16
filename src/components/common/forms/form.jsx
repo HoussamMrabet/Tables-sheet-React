@@ -92,7 +92,7 @@ class Form extends Component {
         return (
             <Select 
                 name = {name}
-                value = {data} 
+                value = {data[name]} 
                 options = {options}
                 onChange = {this.handleChange} 
                 error = {errors[name]}

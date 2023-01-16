@@ -108,7 +108,7 @@ class Movies extends Component {
                     />
                 </div>
                 <div className="col">
-                    <Link to="/movies/new"><button className='btn btn-primary my-2'>New Movie</button></Link>
+                    <Link to="/movies/new" className='btn btn-primary my-2'>New Movie</Link>
                     <h4 className='my-2'>
                         { (filtredMovies.length === 0)? "There are no movies in the database.":"Showing "+filtredMovies.length+" movies in the database."}
                     </h4>
