@@ -2,8 +2,6 @@ import http from './httpService';
 import config from '../config.json';
 import jwtDecode from 'jwt-decode';
 
-http.setJwt(getJwt());
-
 const authApi = config.apiUrl + '/auth';
 const tokenKey = "token";
 
@@ -32,6 +30,8 @@ export function getCurrentUser(){
 export function getJwt(){
     return localStorage.getItem(tokenKey);
 }
+
+http.setJwt(getJwt());
 
 const auth = { login, loginWithJwt, logout, getCurrentUser, getJwt };
 export default auth;

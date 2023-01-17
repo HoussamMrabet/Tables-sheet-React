@@ -42,8 +42,12 @@ class Movies extends Component {
         try {
             await deleteMovie(movie._id);            
         } catch (error) {
-            if (error.response && error.response.status === 404)
-            toast.error('This movie has already been deleted.');
+            if (error.response){
+                if(error.response.status === 404)
+                    toast.error('This movie has already been deleted.');
+                if(error.response.status === 403)
+                    toast.error('Only Admin can delete movies.');
+            } 
 
             this.setState({movies: originalMovies});
         }
@@ -108,12 +112,13 @@ class Movies extends Component {
                     />
                 </div>
                 <div className="col">
-                    <Link to="/movies/new" className='btn btn-primary my-2'>New Movie</Link>
+                    {this.props.user && <Link to="/movies/new" className='btn btn-primary my-2'>New Movie</Link>}
                     <h4 className='my-2'>
                         { (filtredMovies.length === 0)? "There are no movies in the database.":"Showing "+filtredMovies.length+" movies in the database."}
                     </h4>
                     <SearchBox value={searchQuery} onChange={this.handleSearch} />
                     <MoviesTable 
+                        user = {this.props.user}
                         movies = {movies}
                         sortColumn = {sortColumn}
                         onLike = {this.handleLike}
