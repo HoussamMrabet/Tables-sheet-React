@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import auth from './services/authService';
 import Movies from './components/movies';
 import MovieDetails from './components/movieDetails';
 import Customers from './components/customers';
@@ -9,16 +10,25 @@ import Rentals from './components/rentals';
 import NavBar from './components/navBar';
 import LoginForm from './components/loginForm';
 import RegisterForm from './components/registerForm';
+import Logout from './components/logout';
 import 'react-toastify/dist/ReactToastify.css';
 
 class App extends Component {
+    state = {};
+
+    componentDidMount(){
+        const user = auth.getCurrentUser();
+        this.setState({user});
+    }
+
     render() { 
         return (
             <React.Fragment>
                 <ToastContainer />
-                <NavBar />
+                <NavBar user={this.state.user} />
                 <div className="container mt-4">
                     <Switch>
+                        <Route path="/logout" component={Logout} />
                         <Route path="/register" component={RegisterForm} />
                         <Route path="/login" component={LoginForm} />
                         <Route path="/rentals" component={Rentals} />

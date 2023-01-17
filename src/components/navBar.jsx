@@ -17,12 +17,29 @@ class NavBar extends Component {
                         <NavLink className="nav-item nav-link mx-2" to="/rentals">Rentals</NavLink>
                     </div>
                     <div className="navbar-nav">
-                        <NavLink className="nav-item nav-link mx-2" to="/login">Login</NavLink>
-                        <NavLink className="nav-item nav-link mx-2" to="/register">Register</NavLink>
+                        {this.userState(this.props.user)}
                     </div>
                 </div>
             </nav>
         );
+    }
+
+    userState = (user) => {
+        if(user){
+            return(
+                <React.Fragment>
+                    <NavLink className="nav-item nav-link mx-2" to="/profile">{user.name}</NavLink>
+                    <NavLink className="nav-item nav-link mx-2" to="/logout">Logout</NavLink>
+                </React.Fragment>
+            );
+        }else{
+            return(
+                <React.Fragment>
+                    <NavLink className="nav-item nav-link mx-2" to="/login">Login</NavLink>
+                    <NavLink className="nav-item nav-link mx-2" to="/register">Register</NavLink>
+                </React.Fragment>
+            );
+        }
     }
 }
  
