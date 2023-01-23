@@ -6,7 +6,7 @@ import auth from '../services/authService';
 
 class MoviesTable extends Component {
     columns = [
-        { path: "title", label: 'Title', content: movie => (this.user? <Link className='nav-link' to={"/movies/"+movie._id}>{movie.title}</Link> : movie.title)},
+        { path: "title", label: 'Title', content: movie => (auth.getCurrentUser()? <Link className='nav-link' to={"/movies/"+movie._id}>{movie.title}</Link> : movie.title)},
         { path: 'genre.name', label: 'Genre'},
         { path: 'numberInStock', label: 'Stock'},
         { path: 'dailyRentalRate', label: 'Rate'},
